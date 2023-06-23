@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    triggers {
+        cron('H 12 * * *')
+    }
+  
+    stages {
+        stage('Test') {
+            steps {
+                sh 'dotnet build'
+                sh 'dotnet test'
+            }
+        }
+    }
+}
